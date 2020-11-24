@@ -1,11 +1,21 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from mysite.models import Post
 import random
+from datetime import datetime
 
 def homepage(request):
     posts = Post.objects.all()
+    now = datetime.now()
     return render(request, "index.html", locals())
+
+def showpost(request, slug):
+    now = datetime.now()
+    try:
+        post = Post.objects.get(slug=slug)
+        return render(request, "post.html", locals())
+    except:
+        return redirect("/")
      
 def lotto(request):
     lucky =random.randint(1 ,42)

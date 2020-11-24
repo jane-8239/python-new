@@ -27,7 +27,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="http://www.stm.nkust.edu.tw/">航運管理系</a>
@@ -54,20 +54,17 @@
         </div>
       </nav>
       
-        <table class="table table-striped">
-          <tr><th>編號</th><th>主題</th><th>張貼時間</th></tr>
-          {% for post in posts %}
-          <tr>
-            <td>{{ post.id }}</td>
-            <td>
-              <a href="/post/{{post.slug}}/">{{ post.title }}</a>
-            </td>
-            <td>
-              {{ post.pub_date }}
-            </td>
-          </tr>
-          {% endfor %}
-        </table>
+      <div class="card">
+        <div class="card-header">
+          {{ post.title }}
+        </div>
+        <div class="card-body">
+          {{ post.body | linebreaks }}
+        </div>
+        <div class="card-footer">
+          {{ post.pub_date }}
+        </div>
+      </div>
         <hr>
         <i>現在時刻：{{ now }}</i>
       </div>
