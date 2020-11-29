@@ -15,14 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from mysite.views import homepage ,lotto, showpost
-
-
+from mysite.views import homepage ,lotto, showpost, mychart
 
 
 urlpatterns = [
     path('post/<str:slug>/', showpost),
     path('admin/', admin.site.urls),
     path('lotto/', lotto),
+    path('mychart/',mychart),
     path('', homepage),
 ]
