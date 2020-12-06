@@ -3,8 +3,12 @@ from django.http import HttpResponse
 from mysite.models import Post
 import random
 from datetime import datetime
+from mysite.models import AccessInfo
 
 def homepage(request):
+    rec = AccessInfo()
+    rec.save()
+    hit_count = len(AccessInfo.objects.all())
     posts = Post.objects.all()
     now = datetime.now()
     return render(request, "index.html", locals())
