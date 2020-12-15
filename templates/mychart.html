@@ -6,10 +6,14 @@
     <h1>我的統計圖表</h1>
 {% endblock %}
 {% block content %}
-<button><a href="/mychart/">全部顯示</a></button>
-{% for branch in branches %}
-    <button>
-        <a href="/mychart/{{branch.id}}/">{{branch.title}}</a>
+    <button class='btn btn-sm'>
+        <a href="/mychart/">所有分店</a>
+    </button>
+    {% for s in stores %}
+    <button class='btn btn-sm'>
+        <a href="/mychart/{{s.id}}/">
+            {{s.title}}
+        </a>
     </button>
 {% endfor %}
 <center>

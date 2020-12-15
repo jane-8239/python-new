@@ -15,7 +15,9 @@ def homepage(request):
 
 def mychart(request, bid=0):
     now = datetime.now()
-    branches = Branch.objects.all()
+
+    stores = Branch.objects.all()
+    
     if bid == 0:
         data = StoreIncome.objects.all()
     else:
