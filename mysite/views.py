@@ -17,11 +17,23 @@ def mychart(request, bid=0):
     now = datetime.now()
 
     stores = Branch.objects.all()
-    
+
     if bid == 0:
         data = StoreIncome.objects.all()
     else:
         data = StoreIncome.objects.filter(branch=bid)
+    return render(request, "mychart.html", locals())
+
+def chart(request, year=0, month=0):
+    now = datetime.now()
+    stores = Branch.objects.all()
+    
+    if year==0:
+        data = StoreIncome.objects.all()
+    else:
+        data = StoreIncome.objects.filter(income_year=year)
+        if month>0:
+            data = data.filter(income_month=month)
     return render(request, "mychart.html", locals())
 
 def showpost(request, slug):
